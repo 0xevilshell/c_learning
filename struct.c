@@ -25,11 +25,11 @@ int main() {
     for (i = 0; i < MAX_EMPLOYEES; i++)
     {
         employees[i].id = i; // + 1 if we want first id to be 1
-        printf("Employee ID: %d\n", employees[i].id);
+        printf("Employee ID: %d\n", employees[i].id); // 0 to 9
     }
     
-    employees[0].x = 0x41424344;
-    printf("%c\n", employees[0].y);
+    employees[0].x = 0x41424344; //ABCD
+    printf("%c\n", employees[0].y); // D
 
     printf("%d\n", sizeof(struct employee_type));
 
