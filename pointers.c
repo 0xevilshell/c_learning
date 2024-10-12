@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_KINGDOMS 10
 
 int x = 0;
 int *pointerofX = &x;
@@ -6,13 +9,18 @@ int *pointerofX = &x;
 typedef struct Ulthuan {
     char *nation;
     int age;
+    int id;
 } Ulthuan;
 
-void create_kingdoms(Ulthuan *e) {
+int create_kingdoms(Ulthuan *e) {
+    static int numKingdoms = 0;
+    numKingdoms++;
+
+    e->id = numKingdoms;
     e->nation = "High Elves";
     e->age = 1000;
 
-    return;
+    return numKingdoms;
 }
 
 //Ulthuan Caledor ()
@@ -25,6 +33,29 @@ int main(int argc, char const *argv[])
     struct Ulthuan Caledor;
     create_kingdoms(&Caledor);
     printf("%s\n", Caledor.nation);
+
+    struct Ulthuan *united_kingdoms = malloc(sizeof(struct Ulthuan) * MAX_KINGDOMS);
+    if (united_kingdoms == NULL) {
+        printf("allocator failed\n");
+        return -1;
+    }
+
+    create_kingdoms(&united_kingdoms[0]); // creating kingdom number 0 in array
+    united_kingdoms[0].nation = "Avelorn"; // assign from default HE to Avelorn
+    printf("%s\n", united_kingdoms[0].nation);
+    printf("Kingdoms size is %d\n", sizeof(united_kingdoms[0]));
+
+    //int i = 1;
+    for (int i = 0; i < MAX_KINGDOMS; i++) {
+        int id = create_kingdoms(&united_kingdoms[i]);
+        printf("Kingdom id is %d\n", id);
+    }
+
+    // Освобождение памяти для всего массива
+    free(united_kingdoms);
+    united_kingdoms = NULL;
+    printf("Kingdoms size is %d\n", sizeof(united_kingdoms));
+    printf("%s\n", united_kingdoms[0].nation); // segmentation fault
 
     // simple pointer to variable
     int q = 1;
@@ -43,8 +74,8 @@ int main(int argc, char const *argv[])
     printf("%d\n", **pGG); // **
 
     // pointer to function
-    int lord_attack(int range, int damage) {
-        return range * damage;
+    int lord_attack(int sorcery, int damage) {
+        return sorcery * damage;
     }
     /* pointer to attack funtion */ 
     int (*attack_ptr)(int, int) = &lord_attack; // pointer must have type!!!
