@@ -1,6 +1,7 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "text_encoding": "c"
+        "text_encoding": "c",
+        "stdio.h": "c"
     }
 }
