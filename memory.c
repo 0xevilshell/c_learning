@@ -2,6 +2,15 @@
 #include <stdlib.h>
 
 int main() {
+    int pr = 10;          // Обычная переменная
+    int *ptr = &pr;       // Указатель на p
+    int **pptr = &ptr;   // Двойной указатель на ptr
+
+    // Вывод значений для наглядности
+    printf("Значение pr: %d\n", pr);
+    printf("Значение через ptr: %d\n", *ptr);
+    printf("Значение через pptr: %d\n", **pptr);
+
     // Выделение памяти для одного целого числа
     int* p = malloc(sizeof(int));
     if (p == NULL) {
