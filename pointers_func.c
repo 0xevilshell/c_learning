@@ -18,7 +18,8 @@ int main() {
 
     // Первый вызов foo: выделяем память и присваиваем значение 10
     if (foo(&ptr) != 0) {  /*Если foo возвращает ненулевое значение, значит произошла ошибка. 0 HERE IS A FUCKING
-    RETURN CODE FROM ФУКЦНИИ FOO АХАХ КАКОГО XYZ!!!!*/ 
+    RETURN CODE FROM ФУКЦНИИ FOO АХАХ КАКОГО XYZ!!!!
+    THIS IS MOST IMPORTANT LINE OF CODE TO UNDERSTAND POINTERS*/ 
         return 0;  // Завершаем программу, если выделение памяти не удалось
     }
 
