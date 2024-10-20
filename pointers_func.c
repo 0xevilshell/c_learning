@@ -27,7 +27,9 @@ int main() {
     printf("Value: %d\n", *ptr);  // Разыменовываем указатель ptr, чтобы получить значение (ожидается 10)
 
     // Освобождаем выделенную память
-    free(ptr);  // Освобождаем память, чтобы избежать утечки памяти
+    free(ptr);  // Освобождаем память, чтобы избежать утечки. command below to check leak memory
+    // do gcc -o pointers_f ./pointers_func.c -g 
+    // algrind --leak-check=full ./pointers_f -s
 
     // ONE MORE TIME
     char a, b, c, *p;
@@ -38,7 +40,7 @@ int main() {
     p = &c;
     *p = 'Z'; // *p when value
 
-    printf("%c %c %c\n", a, b, c);
+    printf("%c %c %c\n", a, b, c); // A A Z
 
     int num = 10; // initial value 
     void minus10(int *v) { // int * v here is storing address of variable. we take num (adress) and store it into v. we take num because its type of INT - this is very important!
