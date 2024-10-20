@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
+#include <string.h>
+
+
 
 // Функция foo выделяет память для указателя и присваивает значение 10
 int foo(int **ptr) {
@@ -61,6 +65,19 @@ int main() {
     
     minus10(&num); //send as address
     printf("%d\n", num); // changed initial value after function
+
+
+
+    // functions practice
+char *s1 = "Moscow";
+char *s2 = "Saint-Petersburg";
+
+char* longer(char *s1, char *s2) {
+    return (strlen(s1) > strlen(s2)) ? s1 : s2;
+}
+
+char *result = longer(s1, s2);
+printf("String '%s' is longer\n", result);
 
     return 0;  // Завершаем программу
 }
