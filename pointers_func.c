@@ -29,5 +29,36 @@ int main() {
     // Освобождаем выделенную память
     free(ptr);  // Освобождаем память, чтобы избежать утечки памяти
 
+    // ONE MORE TIME
+    char a, b, c, *p;
+
+    a = 'A';
+    p = &a; //p when address
+    b = *p;
+    p = &c;
+    *p = 'Z'; // *p when value
+
+    printf("%c %c %c\n", a, b, c);
+
+    int num = 10; // initial value 
+    void minus10(int *v) { // int * v here is storing address of variable. we take num (adress) and store it into v. we take num because its type of INT - this is very important!
+    
+        *v = *v - 10; //this means I am v, I point to num address via & sign, thats why I get acces into num's value, which equals 10;
+    /* De_referenc_ing is a technique for accessing or manipulating data stored in a memory location pointed to by a pointer.
+     
+        Передача Адреса (&):
+	•	Вы передаёте адрес переменной num в функцию. Это позволяет функции работать с оригинальной переменной, а не с её копией.
+	
+    	Указатель (v):
+	•	Параметр v является указателем, который хранит адрес переменной num.
+	•	Это означает, что любые изменения, сделанные через разыменование *v, будут напрямую влиять на значение переменной num.
+	
+    	Разыменование (*v):
+	•	*v даёт вам доступ к значению, на которое указывает v. Это означает, что через *v вы можете как читать, так и изменять значение этой переменной. */
+    }
+    
+    minus10(&num); //send as address
+    printf("%d\n", num); // changed initial value after function
+
     return 0;  // Завершаем программу
 }
