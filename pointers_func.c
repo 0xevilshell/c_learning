@@ -28,8 +28,8 @@ int main() {
 
     // Освобождаем выделенную память
     free(ptr);  // Освобождаем память, чтобы избежать утечки. command below to check leak memory
-    // do gcc -o pointers_f ./pointers_func.c -g 
-    // algrind --leak-check=full ./pointers_f -s
+    // gcc -o pointers_f ./pointers_func.c -g 
+    // valgrind --leak-check=full ./pointers_f -s
 
     // ONE MORE TIME
     char a, b, c, *p;
