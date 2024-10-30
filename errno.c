@@ -23,6 +23,12 @@ int main(int argc, char *argv[]) { //c - count of program arguments. first (1) i
         4 — только чтение (r).
         7 (4 + 2 + 1) — чтение (r), запись (w), выполнение (x).
 
+        0 means numbers are in 8 decimal from 0 to 7
+        6 — Права для владельца файла.
+        4 — Права для группы.
+        4 — Права для всех остальных.
+
+
     */
     
     if (fd == -1) {  // Если ошибка
