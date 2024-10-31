@@ -2,6 +2,8 @@
 #include <fcntl.h>  // Для open()
 #include <errno.h>  // Для errno
 #include <string.h> // Для strerror()
+#include <unistd.h>
+
 
 int main(int argc, char *argv[]) { //c - count of program arguments. first (1) is a program itself
 // v - number of arguments from 0 to n.. 0 - program itself, 1 - first agrument. example ./myprog -f, -f is a first agrument
@@ -36,7 +38,10 @@ int main(int argc, char *argv[]) { //c - count of program arguments. first (1) i
         return -1;
     }
 
-    
+    char *data_s = "what is this \n";
+    write(fd, data_s, strlen(data_s));
+    close(fd);
 
+    
     return 0;
 }
